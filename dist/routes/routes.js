@@ -9031,7 +9031,7 @@ var login = async (req, res) => {
     console.log(user);
     if (user && import_bcrypt.default.compareSync(req.body.password_user, user.password_user)) {
       const token = import_jsonwebtoken.default.sign({ userId: user.id_users }, secret, { expiresIn: "1h" });
-      res.json({ token });
+      res.status(200).json({ response: user, token });
     } else {
       res.status(401).json({ message: "invalid credecials" });
     }
