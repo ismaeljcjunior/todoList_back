@@ -100,9 +100,10 @@ export const login = async (req: Request, res: Response) => {
             },
         })
         console.log(user)
-        if (user && bcrypt.compareSync(req.body.login_user, user.password_user)) {
+        if (user && bcrypt.compareSync(req.body.password_user, user.password_user)) {
             const token = jwt.sign({ userId: user.id_users }, secret, { expiresIn: '1h' })
-            res.json({ token })
+
+            res.status(200).json({ response: updateUser, token: { token } })
         } else {
             res.status(401).json({ message: 'invalid credecials' })
         }
