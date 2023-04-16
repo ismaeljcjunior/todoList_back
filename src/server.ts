@@ -3,8 +3,8 @@ dotenv.config()
 import express, { Request, Response, Express } from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
-import { appRoutes } from './routes/routes'
 
+import { appRoutes } from './routes/routes'
 
 const app: Express = express()
 const port: number = process.env.PORT as unknown as number

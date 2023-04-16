@@ -7,6 +7,10 @@ var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
 var __copyProps = (to2, from, except, desc) => {
   if (from && typeof from === "object" || typeof from === "function") {
     for (let key of __getOwnPropNames(from))
@@ -23,6 +27,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
   mod
 ));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // node_modules/dotenv/package.json
 var require_package = __commonJS({
@@ -124,7 +129,7 @@ var require_main = __commonJS({
     function _resolveHome(envPath) {
       return envPath[0] === "~" ? path.join(os2.homedir(), envPath.slice(1)) : envPath;
     }
-    function config4(options) {
+    function config2(options) {
       let dotenvPath = path.resolve(process.cwd(), ".env");
       let encoding = "utf8";
       const debug = Boolean(options && options.debug);
@@ -164,7 +169,7 @@ var require_main = __commonJS({
       }
     }
     var DotenvModule = {
-      config: config4,
+      config: config2,
       parse
     };
     module2.exports.config = DotenvModule.config;
@@ -8827,7 +8832,7 @@ var require_client = __commonJS({
     var dmmfString = '{"datamodel":{"enums":[],"models":[{"name":"tasks","dbName":null,"fields":[{"name":"id_tasks","kind":"scalar","isList":false,"isRequired":true,"isUnique":false,"isId":true,"isReadOnly":false,"hasDefaultValue":true,"type":"Int","default":{"name":"autoincrement","args":[]},"isGenerated":false,"isUpdatedAt":false},{"name":"task_name","kind":"scalar","isList":false,"isRequired":false,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":false,"type":"String","isGenerated":false,"isUpdatedAt":false},{"name":"task_status","kind":"scalar","isList":false,"isRequired":false,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":true,"type":"String","default":"isActive","isGenerated":false,"isUpdatedAt":false},{"name":"task_isFinished","kind":"scalar","isList":false,"isRequired":false,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":true,"type":"Boolean","default":false,"isGenerated":false,"isUpdatedAt":false},{"name":"created_at","kind":"scalar","isList":false,"isRequired":true,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":true,"type":"DateTime","default":{"name":"now","args":[]},"isGenerated":false,"isUpdatedAt":false},{"name":"updated_at","kind":"scalar","isList":false,"isRequired":true,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":false,"type":"DateTime","isGenerated":false,"isUpdatedAt":true}],"primaryKey":null,"uniqueFields":[],"uniqueIndexes":[],"isGenerated":false},{"name":"users","dbName":null,"fields":[{"name":"id_users","kind":"scalar","isList":false,"isRequired":true,"isUnique":false,"isId":true,"isReadOnly":false,"hasDefaultValue":true,"type":"Int","default":{"name":"autoincrement","args":[]},"isGenerated":false,"isUpdatedAt":false},{"name":"name_user","kind":"scalar","isList":false,"isRequired":true,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":false,"type":"String","isGenerated":false,"isUpdatedAt":false},{"name":"login_user","kind":"scalar","isList":false,"isRequired":true,"isUnique":true,"isId":false,"isReadOnly":false,"hasDefaultValue":false,"type":"String","isGenerated":false,"isUpdatedAt":false},{"name":"password_user","kind":"scalar","isList":false,"isRequired":true,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":false,"type":"String","isGenerated":false,"isUpdatedAt":false},{"name":"created_at","kind":"scalar","isList":false,"isRequired":true,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":true,"type":"DateTime","default":{"name":"now","args":[]},"isGenerated":false,"isUpdatedAt":false}],"primaryKey":null,"uniqueFields":[],"uniqueIndexes":[],"isGenerated":false}],"types":[]},"mappings":{"modelOperations":[{"model":"tasks","plural":"tasks","findUnique":"findUniquetasks","findUniqueOrThrow":"findUniquetasksOrThrow","findFirst":"findFirsttasks","findFirstOrThrow":"findFirsttasksOrThrow","findMany":"findManytasks","create":"createOnetasks","createMany":"createManytasks","delete":"deleteOnetasks","update":"updateOnetasks","deleteMany":"deleteManytasks","updateMany":"updateManytasks","upsert":"upsertOnetasks","aggregate":"aggregatetasks","groupBy":"groupBytasks"},{"model":"users","plural":"users","findUnique":"findUniqueusers","findUniqueOrThrow":"findUniqueusersOrThrow","findFirst":"findFirstusers","findFirstOrThrow":"findFirstusersOrThrow","findMany":"findManyusers","create":"createOneusers","createMany":"createManyusers","delete":"deleteOneusers","update":"updateOneusers","deleteMany":"deleteManyusers","updateMany":"updateManyusers","upsert":"upsertOneusers","aggregate":"aggregateusers","groupBy":"groupByusers"}],"otherOperations":{"read":[],"write":["executeRaw","queryRaw"]}}}';
     var dmmf = JSON.parse(dmmfString);
     exports2.Prisma.dmmf = JSON.parse(dmmfString);
-    var config4 = {
+    var config2 = {
       "generator": {
         "name": "client",
         "provider": {
@@ -8857,15 +8862,15 @@ var require_client = __commonJS({
       "activeProvider": "mysql",
       "dataProxy": false
     };
-    config4.dirname = dirname2;
-    config4.document = dmmf;
+    config2.dirname = dirname2;
+    config2.document = dmmf;
     var { warnEnvConflicts: warnEnvConflicts2 } = require_library();
     warnEnvConflicts2({
-      rootEnvPath: config4.relativeEnvPaths.rootEnvPath && path.resolve(dirname2, config4.relativeEnvPaths.rootEnvPath),
-      schemaEnvPath: config4.relativeEnvPaths.schemaEnvPath && path.resolve(dirname2, config4.relativeEnvPaths.schemaEnvPath)
+      rootEnvPath: config2.relativeEnvPaths.rootEnvPath && path.resolve(dirname2, config2.relativeEnvPaths.rootEnvPath),
+      schemaEnvPath: config2.relativeEnvPaths.schemaEnvPath && path.resolve(dirname2, config2.relativeEnvPaths.schemaEnvPath)
     });
-    var PrismaClient3 = getPrismaClient2(config4);
-    exports2.PrismaClient = PrismaClient3;
+    var PrismaClient2 = getPrismaClient2(config2);
+    exports2.PrismaClient = PrismaClient2;
     Object.assign(exports2, Prisma);
     path.join(__dirname, "query_engine-windows.dll.node");
     path.join(process.cwd(), "node_modules\\.prisma\\client\\query_engine-windows.dll.node");
@@ -8883,89 +8888,21 @@ var require_client2 = __commonJS({
   }
 });
 
-// src/server.ts
-var import_dotenv = __toESM(require_main());
-var import_express2 = __toESM(require("express"));
-var import_cors2 = __toESM(require("cors"));
-
-// src/routes/routes.ts
-var dotenv3 = __toESM(require_main());
-var import_express = __toESM(require("express"));
-var import_body_parser = __toESM(require("body-parser"));
-var import_cors = __toESM(require("cors"));
-
-// src/controller/taskController.ts
+// src/controller/userController.ts
+var userController_exports = {};
+__export(userController_exports, {
+  deleteUser: () => deleteUser,
+  getUser: () => getUser,
+  login: () => login,
+  newUser: () => newUser,
+  updateUser: () => updateUser
+});
+module.exports = __toCommonJS(userController_exports);
 var dotenv = __toESM(require_main());
 var import_client = __toESM(require_client2());
+var import_bcrypt = __toESM(require("bcrypt"));
 dotenv.config();
 var prisma = new import_client.PrismaClient();
-var newTask = async (req, res) => {
-  var _a2;
-  const dataNewTask = await req.body;
-  try {
-    const newTask2 = await prisma.tasks.create({
-      data: {
-        task_name: (_a2 = dataNewTask.task_name) == null ? void 0 : _a2.trim()
-      }
-    });
-    console.log(newTask2);
-    res.status(200).json({ response: newTask2 });
-  } catch (e) {
-    console.log(e);
-    return res.status(404).json({ response: e });
-  }
-};
-var updateTask = async (req, res) => {
-  const dataId = Number(req.params.id);
-  const data = req.body;
-  console.log(dataId, data);
-  try {
-    const updateTask2 = await prisma.tasks.update({
-      where: {
-        id_tasks: Number(dataId)
-      },
-      data: {
-        task_name: data.task_name,
-        task_status: data.task_status
-      }
-    });
-    console.log(updateTask2);
-    res.status(200).json({ response: updateTask2 });
-  } catch (e) {
-    console.log(e);
-    return res.status(404).json({ response: e });
-  }
-};
-var deleteTask = async (req, res) => {
-  const dataId = Number(req.params.id);
-  try {
-    const deleteTask2 = await prisma.tasks.delete({
-      where: {
-        id_tasks: Number(dataId)
-      }
-    });
-    console.log(deleteTask2);
-    res.status(200).json({ response: deleteTask2 });
-  } catch (e) {
-    return res.status(404).json({ response: e });
-  }
-};
-var getAllTasks = async (req, res) => {
-  try {
-    const allTasks = await prisma.tasks.findMany();
-    console.log(allTasks);
-    res.status(200).json({ response: allTasks });
-  } catch (e) {
-    return res.status(404).json({ response: e });
-  }
-};
-
-// src/controller/userController.ts
-var dotenv2 = __toESM(require_main());
-var import_client2 = __toESM(require_client2());
-var import_bcrypt = __toESM(require("bcrypt"));
-dotenv2.config();
-var prisma2 = new import_client2.PrismaClient();
 var newUser = async (req, res) => {
   const dataNewUser = req.body;
   try {
@@ -8974,7 +8911,7 @@ var newUser = async (req, res) => {
       if (e) {
         res.status(500).send("Error cripting password");
       } else {
-        const newUser2 = await prisma2.users.create({
+        const newUser2 = await prisma.users.create({
           data: {
             name_user: (_a2 = dataNewUser.name_user) == null ? void 0 : _a2.trim(),
             login_user: (_b = dataNewUser.login_user) == null ? void 0 : _b.trim(),
@@ -8990,10 +8927,32 @@ var newUser = async (req, res) => {
     return res.status(404).json({ response: e });
   }
 };
+var updateUser = async (req, res) => {
+  const dataId = Number(req.params.id);
+  const data = req.body;
+  console.log(dataId, data);
+  try {
+    const updateUser2 = await prisma.users.update({
+      where: {
+        id_users: Number(dataId)
+      },
+      data: {
+        name_user: data.name_user,
+        login_user: data.login_user,
+        password_user: data.password_user
+      }
+    });
+    console.log(updateUser2);
+    res.status(200).json({ response: updateUser2 });
+  } catch (e) {
+    console.log(e);
+    return res.status(404).json({ response: e });
+  }
+};
 var deleteUser = async (req, res) => {
   const dataId = Number(req.params.id);
   try {
-    const userToDelete = await prisma2.users.findUnique({
+    const userToDelete = await prisma.users.findUnique({
       where: {
         id_users: dataId
       }
@@ -9002,7 +8961,7 @@ var deleteUser = async (req, res) => {
     if (!userToDelete) {
       return res.status(404).json({ response: "User not found" });
     }
-    const deleteUser2 = await prisma2.users.delete({
+    const deleteUser2 = await prisma.users.delete({
       where: {
         id_users: dataId
       }
@@ -9013,10 +8972,20 @@ var deleteUser = async (req, res) => {
     return res.status(500).json({ response: "Error delete user" });
   }
 };
+var getUser = async (req, res) => {
+  try {
+    const allUser = await prisma.users.findMany();
+    console.log(allUser);
+    res.status(200).json({ response: allUser });
+  } catch (e) {
+    console.log(e);
+    return res.status(404).json({ response: e });
+  }
+};
 var login = async (req, res) => {
   try {
     const dataUserLogin = await req.body;
-    const resultUser = await prisma2.users.findUnique({
+    const resultUser = await prisma.users.findUnique({
       where: {
         login_user: dataUserLogin.login_user
       }
@@ -9027,34 +8996,13 @@ var login = async (req, res) => {
     return res.status(404).json({ response: e });
   }
 };
-
-// src/routes/routes.ts
-dotenv3.config();
-var app = (0, import_express.default)();
-app.use(import_body_parser.default.json());
-app.use((0, import_cors.default)({ origin: "*" }));
-app.use(import_express.default.json());
-app.post("/newtask", newTask);
-app.get("/tasks", getAllTasks);
-app.put("/updatetask/:id", updateTask);
-app.delete("/deletetask/:id", deleteTask);
-app.post("/login", login);
-app.post("/newUser", newUser);
-app.delete("/deleteUser/:id", deleteUser);
-var appRoutes = app;
-
-// src/server.ts
-import_dotenv.default.config();
-var app2 = (0, import_express2.default)();
-var port = process.env.PORT;
-app2.use(import_express2.default.json());
-app2.use("/", appRoutes);
-app2.use((0, import_cors2.default)());
-app2.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-app2.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  deleteUser,
+  getUser,
+  login,
+  newUser,
+  updateUser
 });
 /*! Bundled license information:
 

@@ -129,7 +129,7 @@ var require_main = __commonJS({
     function _resolveHome(envPath) {
       return envPath[0] === "~" ? path.join(os2.homedir(), envPath.slice(1)) : envPath;
     }
-    function config3(options) {
+    function config4(options) {
       let dotenvPath = path.resolve(process.cwd(), ".env");
       let encoding = "utf8";
       const debug = Boolean(options && options.debug);
@@ -169,7 +169,7 @@ var require_main = __commonJS({
       }
     }
     var DotenvModule = {
-      config: config3,
+      config: config4,
       parse
     };
     module2.exports.config = DotenvModule.config;
@@ -8808,6 +8808,7 @@ var require_client = __commonJS({
       id_tasks: "id_tasks",
       task_name: "task_name",
       task_status: "task_status",
+      task_isFinished: "task_isFinished",
       created_at: "created_at",
       updated_at: "updated_at"
     });
@@ -8817,13 +8818,21 @@ var require_client = __commonJS({
       RepeatableRead: "RepeatableRead",
       Serializable: "Serializable"
     });
-    exports2.Prisma.ModelName = makeEnum({
-      tasks: "tasks"
+    exports2.Prisma.UsersScalarFieldEnum = makeEnum({
+      id_users: "id_users",
+      name_user: "name_user",
+      login_user: "login_user",
+      password_user: "password_user",
+      created_at: "created_at"
     });
-    var dmmfString = '{"datamodel":{"enums":[],"models":[{"name":"tasks","dbName":null,"fields":[{"name":"id_tasks","kind":"scalar","isList":false,"isRequired":true,"isUnique":false,"isId":true,"isReadOnly":false,"hasDefaultValue":true,"type":"Int","default":{"name":"autoincrement","args":[]},"isGenerated":false,"isUpdatedAt":false},{"name":"task_name","kind":"scalar","isList":false,"isRequired":false,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":false,"type":"String","isGenerated":false,"isUpdatedAt":false},{"name":"task_status","kind":"scalar","isList":false,"isRequired":false,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":true,"type":"String","default":"isActive","isGenerated":false,"isUpdatedAt":false},{"name":"created_at","kind":"scalar","isList":false,"isRequired":true,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":true,"type":"DateTime","default":{"name":"now","args":[]},"isGenerated":false,"isUpdatedAt":false},{"name":"updated_at","kind":"scalar","isList":false,"isRequired":true,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":false,"type":"DateTime","isGenerated":false,"isUpdatedAt":true}],"primaryKey":null,"uniqueFields":[],"uniqueIndexes":[],"isGenerated":false}],"types":[]},"mappings":{"modelOperations":[{"model":"tasks","plural":"tasks","findUnique":"findUniquetasks","findUniqueOrThrow":"findUniquetasksOrThrow","findFirst":"findFirsttasks","findFirstOrThrow":"findFirsttasksOrThrow","findMany":"findManytasks","create":"createOnetasks","createMany":"createManytasks","delete":"deleteOnetasks","update":"updateOnetasks","deleteMany":"deleteManytasks","updateMany":"updateManytasks","upsert":"upsertOnetasks","aggregate":"aggregatetasks","groupBy":"groupBytasks"}],"otherOperations":{"read":[],"write":["executeRaw","queryRaw"]}}}';
+    exports2.Prisma.ModelName = makeEnum({
+      tasks: "tasks",
+      users: "users"
+    });
+    var dmmfString = '{"datamodel":{"enums":[],"models":[{"name":"tasks","dbName":null,"fields":[{"name":"id_tasks","kind":"scalar","isList":false,"isRequired":true,"isUnique":false,"isId":true,"isReadOnly":false,"hasDefaultValue":true,"type":"Int","default":{"name":"autoincrement","args":[]},"isGenerated":false,"isUpdatedAt":false},{"name":"task_name","kind":"scalar","isList":false,"isRequired":false,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":false,"type":"String","isGenerated":false,"isUpdatedAt":false},{"name":"task_status","kind":"scalar","isList":false,"isRequired":false,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":true,"type":"String","default":"isActive","isGenerated":false,"isUpdatedAt":false},{"name":"task_isFinished","kind":"scalar","isList":false,"isRequired":false,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":true,"type":"Boolean","default":false,"isGenerated":false,"isUpdatedAt":false},{"name":"created_at","kind":"scalar","isList":false,"isRequired":true,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":true,"type":"DateTime","default":{"name":"now","args":[]},"isGenerated":false,"isUpdatedAt":false},{"name":"updated_at","kind":"scalar","isList":false,"isRequired":true,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":false,"type":"DateTime","isGenerated":false,"isUpdatedAt":true}],"primaryKey":null,"uniqueFields":[],"uniqueIndexes":[],"isGenerated":false},{"name":"users","dbName":null,"fields":[{"name":"id_users","kind":"scalar","isList":false,"isRequired":true,"isUnique":false,"isId":true,"isReadOnly":false,"hasDefaultValue":true,"type":"Int","default":{"name":"autoincrement","args":[]},"isGenerated":false,"isUpdatedAt":false},{"name":"name_user","kind":"scalar","isList":false,"isRequired":true,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":false,"type":"String","isGenerated":false,"isUpdatedAt":false},{"name":"login_user","kind":"scalar","isList":false,"isRequired":true,"isUnique":true,"isId":false,"isReadOnly":false,"hasDefaultValue":false,"type":"String","isGenerated":false,"isUpdatedAt":false},{"name":"password_user","kind":"scalar","isList":false,"isRequired":true,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":false,"type":"String","isGenerated":false,"isUpdatedAt":false},{"name":"created_at","kind":"scalar","isList":false,"isRequired":true,"isUnique":false,"isId":false,"isReadOnly":false,"hasDefaultValue":true,"type":"DateTime","default":{"name":"now","args":[]},"isGenerated":false,"isUpdatedAt":false}],"primaryKey":null,"uniqueFields":[],"uniqueIndexes":[],"isGenerated":false}],"types":[]},"mappings":{"modelOperations":[{"model":"tasks","plural":"tasks","findUnique":"findUniquetasks","findUniqueOrThrow":"findUniquetasksOrThrow","findFirst":"findFirsttasks","findFirstOrThrow":"findFirsttasksOrThrow","findMany":"findManytasks","create":"createOnetasks","createMany":"createManytasks","delete":"deleteOnetasks","update":"updateOnetasks","deleteMany":"deleteManytasks","updateMany":"updateManytasks","upsert":"upsertOnetasks","aggregate":"aggregatetasks","groupBy":"groupBytasks"},{"model":"users","plural":"users","findUnique":"findUniqueusers","findUniqueOrThrow":"findUniqueusersOrThrow","findFirst":"findFirstusers","findFirstOrThrow":"findFirstusersOrThrow","findMany":"findManyusers","create":"createOneusers","createMany":"createManyusers","delete":"deleteOneusers","update":"updateOneusers","deleteMany":"deleteManyusers","updateMany":"updateManyusers","upsert":"upsertOneusers","aggregate":"aggregateusers","groupBy":"groupByusers"}],"otherOperations":{"read":[],"write":["executeRaw","queryRaw"]}}}';
     var dmmf = JSON.parse(dmmfString);
     exports2.Prisma.dmmf = JSON.parse(dmmfString);
-    var config3 = {
+    var config4 = {
       "generator": {
         "name": "client",
         "provider": {
@@ -8853,15 +8862,15 @@ var require_client = __commonJS({
       "activeProvider": "mysql",
       "dataProxy": false
     };
-    config3.dirname = dirname2;
-    config3.document = dmmf;
+    config4.dirname = dirname2;
+    config4.document = dmmf;
     var { warnEnvConflicts: warnEnvConflicts2 } = require_library();
     warnEnvConflicts2({
-      rootEnvPath: config3.relativeEnvPaths.rootEnvPath && path.resolve(dirname2, config3.relativeEnvPaths.rootEnvPath),
-      schemaEnvPath: config3.relativeEnvPaths.schemaEnvPath && path.resolve(dirname2, config3.relativeEnvPaths.schemaEnvPath)
+      rootEnvPath: config4.relativeEnvPaths.rootEnvPath && path.resolve(dirname2, config4.relativeEnvPaths.rootEnvPath),
+      schemaEnvPath: config4.relativeEnvPaths.schemaEnvPath && path.resolve(dirname2, config4.relativeEnvPaths.schemaEnvPath)
     });
-    var PrismaClient2 = getPrismaClient2(config3);
-    exports2.PrismaClient = PrismaClient2;
+    var PrismaClient3 = getPrismaClient2(config4);
+    exports2.PrismaClient = PrismaClient3;
     Object.assign(exports2, Prisma);
     path.join(__dirname, "query_engine-windows.dll.node");
     path.join(process.cwd(), "node_modules\\.prisma\\client\\query_engine-windows.dll.node");
@@ -8885,7 +8894,7 @@ __export(routes_exports, {
   appRoutes: () => appRoutes
 });
 module.exports = __toCommonJS(routes_exports);
-var dotenv2 = __toESM(require_main());
+var dotenv3 = __toESM(require_main());
 var import_express = __toESM(require("express"));
 var import_body_parser = __toESM(require("body-parser"));
 var import_cors = __toESM(require("cors"));
@@ -8956,8 +8965,76 @@ var getAllTasks = async (req, res) => {
   }
 };
 
-// src/routes/routes.ts
+// src/controller/userController.ts
+var dotenv2 = __toESM(require_main());
+var import_client2 = __toESM(require_client2());
+var import_bcrypt = __toESM(require("bcrypt"));
 dotenv2.config();
+var prisma2 = new import_client2.PrismaClient();
+var newUser = async (req, res) => {
+  const dataNewUser = req.body;
+  try {
+    import_bcrypt.default.hash(dataNewUser.password_user, 10, async (e, hash) => {
+      var _a2, _b;
+      if (e) {
+        res.status(500).send("Error cripting password");
+      } else {
+        const newUser2 = await prisma2.users.create({
+          data: {
+            name_user: (_a2 = dataNewUser.name_user) == null ? void 0 : _a2.trim(),
+            login_user: (_b = dataNewUser.login_user) == null ? void 0 : _b.trim(),
+            password_user: hash
+            // Salva o hash da senha no banco de dados
+          }
+        });
+        res.status(200).json({ response: newUser2 });
+      }
+    });
+  } catch (e) {
+    console.log(e);
+    return res.status(404).json({ response: e });
+  }
+};
+var deleteUser = async (req, res) => {
+  const dataId = Number(req.params.id);
+  try {
+    const userToDelete = await prisma2.users.findUnique({
+      where: {
+        id_users: dataId
+      }
+    });
+    console.log(userToDelete);
+    if (!userToDelete) {
+      return res.status(404).json({ response: "User not found" });
+    }
+    const deleteUser2 = await prisma2.users.delete({
+      where: {
+        id_users: dataId
+      }
+    });
+    console.log(deleteUser2);
+    res.status(200).json({ response: deleteUser2 });
+  } catch (e) {
+    return res.status(500).json({ response: "Error delete user" });
+  }
+};
+var login = async (req, res) => {
+  try {
+    const dataUserLogin = await req.body;
+    const resultUser = await prisma2.users.findUnique({
+      where: {
+        login_user: dataUserLogin.login_user
+      }
+    });
+    res.status(200).json({ response: resultUser });
+  } catch (e) {
+    console.log(e);
+    return res.status(404).json({ response: e });
+  }
+};
+
+// src/routes/routes.ts
+dotenv3.config();
 var app = (0, import_express.default)();
 app.use(import_body_parser.default.json());
 app.use((0, import_cors.default)({ origin: "*" }));
@@ -8965,7 +9042,10 @@ app.use(import_express.default.json());
 app.post("/newtask", newTask);
 app.get("/tasks", getAllTasks);
 app.put("/updatetask/:id", updateTask);
-app.delete("/updatetask", deleteTask);
+app.delete("/deletetask/:id", deleteTask);
+app.post("/login", login);
+app.post("/newUser", newUser);
+app.delete("/deleteUser/:id", deleteUser);
 var appRoutes = app;
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
