@@ -8,6 +8,7 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 
 const prisma = new PrismaClient()
+const secret = 'secret'
 
 export const newUser = async (req: Request, res: Response) => {
     const dataNewUser: IUserProps = req.body
@@ -93,15 +94,20 @@ export const getUser = async (req: Request, res: Response) => {
 export const login = async (req: Request, res: Response) => {
     const dataUserLogin: IUserLoginProps = await req.body
     try {
-        const dataUserLogin: IUserProps = await req.body
-        const resultUser = await prisma.users.findUnique({
+        const user = await prisma.users.findUnique({
             where: {
                 login_user: dataUserLogin.login_user,
             },
         })
-        res.status(200).json({ response: resultUser })
+        console.log(user)
+        if (user && bcrypt.compareSync(req.body.login_user, user.password_user)) {
+            const token = jwt.sign({ userId: user.id_users }, secret, { expiresIn: '1h' })
+            res.json({ token })
+        } else {
+            res.status(401).json({ message: 'invalid credecials' })
+        }
     } catch (e) {
         console.log(e)
-        return res.status(404).json({ response: e })
+        res.status(500).json({ message: 'error login' })
     }
 }

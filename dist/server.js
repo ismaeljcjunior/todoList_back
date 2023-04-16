@@ -8963,9 +8963,11 @@ var getAllTasks = async (req, res) => {
 // src/controller/userController.ts
 var dotenv2 = __toESM(require_main());
 var import_client2 = __toESM(require_client2());
+var import_jsonwebtoken = __toESM(require("jsonwebtoken"));
 var import_bcrypt = __toESM(require("bcrypt"));
 dotenv2.config();
 var prisma2 = new import_client2.PrismaClient();
+var secret = "secret";
 var newUser = async (req, res) => {
   const dataNewUser = req.body;
   try {
@@ -9014,17 +9016,23 @@ var deleteUser = async (req, res) => {
   }
 };
 var login = async (req, res) => {
+  const dataUserLogin = await req.body;
   try {
-    const dataUserLogin = await req.body;
-    const resultUser = await prisma2.users.findUnique({
+    const user = await prisma2.users.findUnique({
       where: {
         login_user: dataUserLogin.login_user
       }
     });
-    res.status(200).json({ response: resultUser });
+    console.log(user);
+    if (user && import_bcrypt.default.compareSync(req.body.login_user, user.password_user)) {
+      const token = import_jsonwebtoken.default.sign({ userId: user.id_users }, secret, { expiresIn: "1h" });
+      res.json({ token });
+    } else {
+      res.status(401).json({ message: "invalid credecials" });
+    }
   } catch (e) {
     console.log(e);
-    return res.status(404).json({ response: e });
+    res.status(500).json({ message: "error login" });
   }
 };
 

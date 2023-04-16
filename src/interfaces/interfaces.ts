@@ -13,6 +13,6 @@ export interface IUserProps {
 }
 
 export interface IUserLoginProps {
-    userLogin?: string
-    userPassword?: string
+    login_user?: string
+    login_password?: string
 }

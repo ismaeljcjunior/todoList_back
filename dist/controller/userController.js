@@ -8900,9 +8900,11 @@ __export(userController_exports, {
 module.exports = __toCommonJS(userController_exports);
 var dotenv = __toESM(require_main());
 var import_client = __toESM(require_client2());
+var import_jsonwebtoken = __toESM(require("jsonwebtoken"));
 var import_bcrypt = __toESM(require("bcrypt"));
 dotenv.config();
 var prisma = new import_client.PrismaClient();
+var secret = "secret";
 var newUser = async (req, res) => {
   const dataNewUser = req.body;
   try {
@@ -8983,17 +8985,23 @@ var getUser = async (req, res) => {
   }
 };
 var login = async (req, res) => {
+  const dataUserLogin = await req.body;
   try {
-    const dataUserLogin = await req.body;
-    const resultUser = await prisma.users.findUnique({
+    const user = await prisma.users.findUnique({
       where: {
         login_user: dataUserLogin.login_user
       }
     });
-    res.status(200).json({ response: resultUser });
+    console.log(user);
+    if (user && import_bcrypt.default.compareSync(req.body.login_user, user.password_user)) {
+      const token = import_jsonwebtoken.default.sign({ userId: user.id_users }, secret, { expiresIn: "1h" });
+      res.json({ token });
+    } else {
+      res.status(401).json({ message: "invalid credecials" });
+    }
   } catch (e) {
     console.log(e);
-    return res.status(404).json({ response: e });
+    res.status(500).json({ message: "error login" });
   }
 };
 // Annotate the CommonJS export names for ESM import in node:
