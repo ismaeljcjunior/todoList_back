@@ -10,7 +10,7 @@ datasource db {
 model tasks {
   id_tasks        Int      @id @unique @default(autoincrement())
   task_name       String?
-  task_status     String?  @default("isActive")
+  task_status     String?  @default("isPending")
   task_isFinished Boolean? @default(false)
   created_at      DateTime @default(now())
   updated_at      DateTime @updatedAt
