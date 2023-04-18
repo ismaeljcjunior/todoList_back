@@ -59,7 +59,7 @@ export const deleteTask = async (req: Request, res: Response) => {
         return res.status(404).json({ response: e })
     }
 }
-export const getTasks = async (req: Request, res: Response) => {
+export const getAllTasks = async (req: Request, res: Response) => {
 
     try {
         const allTasks = await prisma.tasks.findMany()
@@ -72,13 +72,13 @@ export const getTasks = async (req: Request, res: Response) => {
 export const getFinishedTasks = async (req: Request, res: Response) => {
 
     try {
-        const allTasks = await prisma.tasks.findMany({
+        const finishedTasks = await prisma.tasks.findMany({
             where: {
                 task_status: 'isFinished',
             },
         })
-        console.log(allTasks)
-        res.status(200).json({ response: allTasks })
+        console.log(finishedTasks)
+        res.status(200).json({ response: finishedTasks })
     } catch (e) {
         return res.status(404).json({ response: e })
     }
@@ -86,13 +86,13 @@ export const getFinishedTasks = async (req: Request, res: Response) => {
 export const getPendingTasks = async (req: Request, res: Response) => {
 
     try {
-        const allTasks = await prisma.tasks.findMany({
+        const pendingTasks = await prisma.tasks.findMany({
             where: {
                 task_status: 'isPending',
             },
         })
-        console.log(allTasks)
-        res.status(200).json({ response: allTasks })
+        console.log(pendingTasks)
+        res.status(200).json({ response: pendingTasks })
     } catch (e) {
         return res.status(404).json({ response: e })
     }
